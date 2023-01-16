@@ -1,16 +1,23 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
+import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import { legacy_createStore } from "redux";
 import App from "./App";
+import rootReducer from "./modules/counter";
 import reportWebVitals from "./reportWebVitals";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
 
+const store = legacy_createStore(rootReducer);
+
 root.render(
   <BrowserRouter>
     <React.StrictMode>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </React.StrictMode>
   </BrowserRouter>
 );
