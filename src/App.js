@@ -1,17 +1,18 @@
 import React from "react";
-import CommentListContainer from "./containers/CommentListContainer";
-import PageListContainer from "./containers/PageListContainer";
-import FormContainer from "./containers/FormContainer";
-import CounterContainer from "./containers/CounterContainer";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import PostPage from "./pages/PostPage";
+import PostListPage from "./pages/PostListPage";
 
 function App() {
   return (
-    <div>
-      <CommentListContainer />
-      <PageListContainer />
-      <FormContainer />
-      <CounterContainer />
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<PostListPage />}></Route>
+          <Route path=":id" element={<PostPage />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
